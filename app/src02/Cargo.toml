@@ -1,0 +1,22 @@
+[package]
+name = "src02"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# async runtime
+tokio = { version = "1.46", features = ["macros", "rt-multi-thread"] }
+# serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+# embedded/embedded-like DB via sqlite with sqlx; optional runtime features
+sqlx = { version = "0.7", features = ["sqlite","runtime-tokio-native-tls","macros"] }
+# small in-memory alternative (optional) - not used directly but available
+sled = "0.34"
+# CLI and env
+clap = { version = "4.3", features = ["derive"] }
+dotenvy = "0.15"
+
+[dev-dependencies]
+# for tests
+pretty_assertions = "1.3"
