@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>src03_leptos — E-Commerce</title>
+    <link id="theme-stylesheet" rel="stylesheet" href="css/style-light.css">
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+        }
+        
+        #theme-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 9999;
+            background: var(--button-bg, #f0f0f0);
+            color: var(--text-primary, #333);
+            border: 2px solid var(--border-color, #ccc);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+        
+        #theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+        }
+        
+        #theme-toggle:active {
+            transform: scale(0.95);
+        }
+    </style>
+
+<link rel="preload" href="/src03_frontend-77fe74700ca7a668_bg.wasm" crossorigin="anonymous" integrity="sha384-rK9RaJKeAp-i6vjmQHgtfeJSmk5twZL8gqODwZVv-Zt0nkGFZwL0WL1K4w2JvA-x" as="fetch" type="application/wasm">
+<link rel="modulepreload" href="/src03_frontend-77fe74700ca7a668.js" crossorigin="anonymous" integrity="sha384-9yExALWXHAfUVUk9ZopNxogO2s2jIHa9pzxm_4YgQgoZvxzDHMmBoduZ1uAykmVS"></head>
+<body>
+        <button id="theme-toggle" title="Cambia tema (Light/Dark/Modern)">☀️</button>
+    <div id="app"></div>
+        <!-- Minimal CSS variable fallbacks so page is styled even if external theme CSS fails to load -->
+        <style id="theme-fallback-root">
+            :root{
+                --bg-primary: #ffffff;
+                --text-primary: #2c3e50;
+                --button-bg: #ecf0f1;
+                --border-color: #bdc3c7;
+            }
+            html,body{background-color:var(--bg-primary);color:var(--text-primary)}
+        </style>
+    <script>
+        const themes = ['light', 'dark', 'modern'];
+        
+        function switchTheme(themeName) {
+            localStorage.setItem('preferred-theme', themeName);
+            const link = document.getElementById('theme-stylesheet');
+            // Set an onerror handler to gracefully fallback if the CSS file is missing
+            link.onerror = function() {
+                // If the requested theme file fails to load, fallback to light theme
+                console.warn('Theme stylesheet failed to load. Falling back to light theme.');
+                link.onerror = null; // avoid loops
+                link.href = 'css/style-light.css';
+                localStorage.setItem('preferred-theme', 'light');
+                document.documentElement.setAttribute('data-theme', 'light');
+                updateThemeToggleIcon();
+            };
+            link.href = `css/style-${themeName}.css`;
+            // Apply essential CSS variable overrides immediately so the UI updates
+            applyEssentialThemeVars(themeName);
+            updateThemeToggleIcon();
+            document.documentElement.setAttribute('data-theme', themeName);
+        }
+
+        // Essential variable sets for immediate visual feedback (fallback when external CSS isn't loaded)
+        const themeVars = {
+            light: {
+                '--bg-primary': '#ffffff',
+                '--text-primary': '#2c3e50',
+                '--button-bg': '#ecf0f1',
+                '--border-color': '#bdc3c7'
+            },
+            dark: {
+                '--bg-primary': '#121212',
+                '--text-primary': '#e0e0e0',
+                '--button-bg': '#2a2a2a',
+                '--border-color': '#3f3f3f'
+            },
+            modern: {
+                '--bg-primary': '#f8f9ff',
+                '--text-primary': '#2d3436',
+                '--button-bg': '#eef2ff',
+                '--border-color': '#dde4ff'
+            }
+        };
+
+        function applyEssentialThemeVars(themeName){
+            const vars = themeVars[themeName] || themeVars.light;
+            Object.entries(vars).forEach(([k,v]) => {
+                document.documentElement.style.setProperty(k, v);
+            });
+            // also update fallback style block for immediate effect on first paint
+            const fallback = document.getElementById('theme-fallback-root');
+            if(fallback) fallback.textContent = `:root{${Object.entries(vars).map(([k,v])=>`${k}:${v};`).join('')}}`;
+        }
+        
+        function updateThemeToggleIcon() {
+            const toggle = document.getElementById('theme-toggle');
+            const theme = localStorage.getItem('preferred-theme') || 'light';
+            const icons = {
+                light: '☀️',
+                dark: '🌙',
+                modern: '✨'
+            };
+            toggle.textContent = icons[theme];
+        }
+        
+        function nextTheme() {
+            const currentTheme = localStorage.getItem('preferred-theme') || 'light';
+            const nextIndex = (themes.indexOf(currentTheme) + 1) % themes.length;
+            switchTheme(themes[nextIndex]);
+        }
+        
+        // Initialize theme on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const saved = localStorage.getItem('preferred-theme') || 'light';
+            switchTheme(saved);
+            
+            const toggle = document.getElementById('theme-toggle');
+            toggle.addEventListener('click', nextTheme);
+        });
+        
+        // Expose globally for console testing
+        window.switchTheme = switchTheme;
+        window.nextTheme = nextTheme;
+    </script>
+
+
+
+<script type="module">
+import init, * as bindings from '/src03_frontend-77fe74700ca7a668.js';
+init('/src03_frontend-77fe74700ca7a668_bg.wasm');
+window.wasmBindings = bindings;
+
+</script><script>"use strict";
+
+(function () {
+
+    const address = '{{__TRUNK_ADDRESS__}}';
+    const base = '{{__TRUNK_WS_BASE__}}';
+    let protocol = '';
+    protocol =
+        protocol
+            ? protocol
+            : window.location.protocol === 'https:'
+                ? 'wss'
+                : 'ws';
+    const url = protocol + '://' + address + base + '.well-known/trunk/ws';
+
+    class Overlay {
+        constructor() {
+            // create an overlay
+            this._overlay = document.createElement("div");
+            const style = this._overlay.style;
+            style.height = "100vh";
+            style.width = "100vw";
+            style.position = "fixed";
+            style.top = "0";
+            style.left = "0";
+            style.backgroundColor = "rgba(222, 222, 222, 0.5)";
+            style.fontFamily = "sans-serif";
+            // not sure that's the right approach
+            style.zIndex = "1000000";
+            style.backdropFilter = "blur(1rem)";
+
+            const container = document.createElement("div");
+            // center it
+            container.style.position = "absolute";
+            container.style.top = "30%";
+            container.style.left = "15%";
+            container.style.maxWidth = "85%";
+
+            this._title = document.createElement("div");
+            this._title.innerText = "Build failure";
+            this._title.style.paddingBottom = "2rem";
+            this._title.style.fontSize = "2.5rem";
+
+            this._message = document.createElement("div");
+            this._message.style.whiteSpace = "pre-wrap";
+
+            const icon= document.createElement("div");
+            icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#dc3545" viewBox="0 0 16 16"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>';
+            this._title.prepend(icon);
+
+            container.append(this._title, this._message);
+            this._overlay.append(container);
+
+            this._inject();
+            window.setInterval(() => {
+                this._inject();
+            }, 250);
+        }
+
+        set reason(reason) {
+            this._message.textContent = reason;
+        }
+
+        _inject() {
+            if (!this._overlay.isConnected) {
+                // prepend it
+                document.body?.prepend(this._overlay);
+            }
+        }
+
+    }
+
+    class Client {
+        constructor(url) {
+            this.url = url;
+            this.poll_interval = 5000;
+            this._overlay = null;
+        }
+
+        start() {
+            const ws = new WebSocket(this.url);
+            ws.onmessage = (ev) => {
+                const msg = JSON.parse(ev.data);
+                switch (msg.type) {
+                    case "reload":
+                        this.reload();
+                        break;
+                    case "buildFailure":
+                        this.buildFailure(msg.data)
+                        break;
+                }
+            };
+            ws.onclose = this.onclose;
+        }
+
+        onclose() {
+            window.setTimeout(
+                () => {
+                    // when we successfully reconnect, we'll force a
+                    // reload (since we presumably lost connection to
+                    // trunk due to it being killed, so it will have
+                    // rebuilt on restart)
+                    const ws = new WebSocket(this.url);
+                    ws.onopen = () => window.location.reload();
+                    ws.onclose = this.onclose;
+                },
+                this.poll_interval);
+        }
+
+        reload() {
+            window.location.reload();
+        }
+
+        buildFailure({reason}) {
+            // also log the console
+            console.error("Build failed:", reason);
+
+            console.debug("Overlay", this._overlay);
+
+            if (!this._overlay) {
+                this._overlay = new Overlay();
+            }
+            this._overlay.reason = reason;
+        }
+    }
+
+    new Client(url).start();
+
+})()
+</script></body></html>

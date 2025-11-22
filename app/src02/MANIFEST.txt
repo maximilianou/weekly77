@@ -30,7 +30,7 @@ CREATED FILES:
   ✅ src/main.rs               - Legacy main (deprecated, see bin/main.rs)
   ✅ src/bin/main.rs           - CLI entry point with Clap & Dotenvy
 
-�� TESTS (4 tests, 100% passing)
+-- TESTS (4 tests, 100% passing)
   ✅ tests/integration_tests.rs - Core logic tests (2 tests)
   ✅ tests/catalog_tests.rs     - Catalog functionality (1 test)
   ✅ tests/persistence_tests.rs - Database operations (1 test)
