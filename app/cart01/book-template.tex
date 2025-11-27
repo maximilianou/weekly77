@@ -1,0 +1,61 @@
+% Minimal Pandoc LaTeX book template (XeLaTeX)
+\documentclass[11pt, oneside]{book}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+  \setmainfont{DejaVu Serif}
+  \setsansfont{DejaVu Sans}
+  \setmonofont{DejaVu Sans Mono}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{hyperref}
+% Define tightlist for Pandoc-generated lists
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Provide passthrough macro used by pandoc
+\providecommand{\passthrough}[1]{#1}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,breaklines=true}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{titling}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\sffamily\thepage}
+\fancyhead[RE,LO]{\sffamily $author$}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Titlepage with optional cover image
+\begin{document}
+\begin{titlepage}
+  \centering
+  \vspace*{2cm}
+  {\Huge\bfseries $title$ \par}
+  \vspace{1.5cm}
+  {\Large $subtitle$ \par}
+  \vfill
+  {\large $author$ \par}
+  {\small $date$ \par}
+  \vfill
+  $if(cover-image)$
+    \begin{center}\includegraphics[width=0.9\textwidth]{$cover-image$}\end{center}
+  $endif$
+\end{titlepage}
+
+\tableofcontents
+\cleardoublepage
+
+$body$
+
+\end{document}

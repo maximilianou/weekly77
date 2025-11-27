@@ -1,0 +1,28 @@
+[package]
+name = "cart01"
+version = "0.1.0"
+edition = "2021"
+authors = ["Learning Path"]
+description = "Step-by-step Rust learning: Product struct with validation, tests, and documentation"
+
+[dependencies]
+# Date and time handling (explains: external crates, chrono, date parsing)
+chrono = { version = "0.4", features = ["serde"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[dev-dependencies]
+# Testing framework (already included in Rust std)
+# No external test deps needed - we use built-in #[test] and #[cfg(test)]
+
+[[bin]]
+name = "cart01"
+path = "src/main.rs"
+
+[lib]
+name = "cart01"
+path = "src/lib.rs"
+
+[profile.release]
+opt-level = 3
+lto = true

@@ -1,0 +1,43 @@
+graph LR
+    A["Product::new<br/>Input"]
+    A1["id: u64"]
+    A2["name: &str"]
+    A3["price: f64"]
+    
+    V["Validation<br/>Layer"]
+    
+    V1["id != 0?"]
+    V2["!name.empty?"]
+    V3["price >= 0?"]
+    V4["date parse OK?"]
+    
+    OK["All valid"]
+    ERR["Return Error"]
+    
+    RESULT["Result::Ok<br/>Product"]
+    RESULT_ERR["Result::Err<br/>ProductError"]
+    
+    A1 --> V
+    A2 --> V
+    A3 --> V
+    
+    V --> V1 --> FAIL1{Failed?}
+    V1 --> V2 --> FAIL2{Failed?}
+    V2 --> V3 --> FAIL3{Failed?}
+    V3 --> V4 --> FAIL4{Failed?}
+    
+    FAIL1 -->|Yes| ERR
+    FAIL2 -->|Yes| ERR
+    FAIL3 -->|Yes| ERR
+    FAIL4 -->|Yes| ERR
+    
+    FAIL1 -->|No| OK
+    FAIL2 -->|No| OK
+    FAIL3 -->|No| OK
+    FAIL4 -->|No| OK
+    
+    ERR --> RESULT_ERR
+    OK --> RESULT
+    
+    style OK fill:#90EE90
+    style ERR fill:#FFB6C6

@@ -1,0 +1,14 @@
+graph TD
+    A["Source Value<br/>(Heap: String)"]
+    B["Ownership Transfer"]
+    C["Variable A:<br/>Owns String"]
+    D["Variable B:<br/>Takes ownership"]
+    E["After move:<br/>A invalid<br/>B owns String"]
+    
+    A --> B
+    C --> B --> D
+    D --> E
+    
+    style C fill:#90EE90
+    style D fill:#FFB6C6
+    style E fill:#87CEEB

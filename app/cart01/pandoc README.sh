@@ -1,0 +1,1 @@
+pandoc README.md   --from=markdown+pipe_tables+auto_identifiers  --to=pdf   --pdf-engine=xelatex   --template=/usr/local/share/eisvogel-template/template-multi-file/eisvogel.latex  -F mermaid-filter   --table-of-contents  --toc-depth=3   --number-sections   --syntax-highlighting=zenburn   --resource-path=/usr/local/share/eisvogel-template   -o MyProject-Book.pdf
