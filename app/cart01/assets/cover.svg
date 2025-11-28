@@ -1,10 +1,193 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200">
-  <rect width="100%" height="100%" fill="#0066CC" />
-  <g fill="#ffffff" font-family="DejaVu Sans, Arial, sans-serif">
-    <text x="50%" y="28%" text-anchor="middle" font-size="40">cart01</text>
-    <text x="50%" y="36%" text-anchor="middle" font-size="22">Learning Rust - Product Struct</text>
-    <text x="50%" y="44%" text-anchor="middle" font-size="16">Guida passo-passo — Maximiliano Usich</text>
-    <rect x="10%" y="72%" width="80%" height="0.6" fill="#ffffff" />
-    <text x="50%" y="78%" text-anchor="middle" font-size="12">Open Source • Creative Commons</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1350">
+  <defs>
+    <linearGradient id="whiteBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redTransparent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF0000;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#FF0000;stop-opacity:0.08" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#whiteBg)" />
+  
+  <!-- TITLE SECTION (Top) - RED TEXT, FULL VISIBILITY -->
+  <g>
+    <text x="50%" y="80" text-anchor="middle" font-size="48" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Rust Software Development Day 1</text>
+    <text x="50%" y="140" text-anchor="middle" font-size="36" fill="#CC0000" font-family="Arial, sans-serif">Learning Cart</text>
+    <text x="50%" y="185" text-anchor="middle" font-size="20" fill="#CC0000" font-family="Arial, sans-serif">Product Struct - Validation - Testing</text>
+    <text x="50%" y="215" text-anchor="middle" font-size="16" fill="#CC0000" font-family="Arial, sans-serif">by Maximiliano Usich</text>
+  </g>
+  
+  <line x1="50" y1="235" x2="950" y2="235" stroke="#CC0000" stroke-width="3" opacity="1" />
+  
+  <!-- KEY TECHNOLOGIES TABLE - 4 COLUMNS - ALL 29 TERMS -->
+  <g>
+    <rect x="30" y="260" width="940" height="560" rx="10" fill="url(#redTransparent)" stroke="#CC0000" stroke-width="2" opacity="0.5" />
+    
+    <text x="50" y="295" font-size="24" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Key Technologies (29 Rust Concepts)</text>
+    <line x1="50" y1="310" x2="950" y2="310" stroke="#CC0000" stroke-width="2" />
+    
+    <!-- Row 1 -->
+    <text x="70" y="345" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">struct</text>
+    <text x="310" y="345" font-size="16" fill="#333333" font-family="monospace">pub struct Product</text>
+    <text x="550" y="345" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">enum</text>
+    <text x="790" y="345" font-size="16" fill="#333333" font-family="monospace">enum ProductError</text>
+    
+    <!-- Row 2 -->
+    <text x="70" y="375" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">impl</text>
+    <text x="310" y="375" font-size="16" fill="#333333" font-family="monospace">impl Product { }</text>
+    <text x="550" y="375" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">fn</text>
+    <text x="790" y="375" font-size="16" fill="#333333" font-family="monospace">fn id(&amp;self)</text>
+    
+    <!-- Row 3 -->
+    <text x="70" y="405" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Result</text>
+    <text x="310" y="405" font-size="16" fill="#333333" font-family="monospace">Result&lt;T, E&gt;</text>
+    <text x="550" y="405" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Option</text>
+    <text x="790" y="405" font-size="16" fill="#333333" font-family="monospace">Option::Some</text>
+    
+    <!-- Row 4 -->
+    <text x="70" y="435" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">&amp;self</text>
+    <text x="310" y="435" font-size="16" fill="#333333" font-family="monospace">fn id(&amp;self)</text>
+    <text x="550" y="435" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">&amp;mut self</text>
+    <text x="790" y="435" font-size="16" fill="#333333" font-family="monospace">fn set_name(&amp;mut)</text>
+    
+    <!-- Row 5 -->
+    <text x="70" y="465" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">match</text>
+    <text x="310" y="465" font-size="16" fill="#333333" font-family="monospace">match result { }</text>
+    <text x="550" y="465" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Ok</text>
+    <text x="790" y="465" font-size="16" fill="#333333" font-family="monospace">Ok(value)</text>
+    
+    <!-- Row 6 -->
+    <text x="70" y="495" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Err</text>
+    <text x="310" y="495" font-size="16" fill="#333333" font-family="monospace">Err(error)</text>
+    <text x="550" y="495" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">?</text>
+    <text x="790" y="495" font-size="16" fill="#333333" font-family="monospace">parse_date(s)?</text>
+    
+    <!-- Row 7 -->
+    <text x="70" y="525" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">#[derive]</text>
+    <text x="310" y="525" font-size="16" fill="#333333" font-family="monospace">#[derive(...)]</text>
+    <text x="550" y="525" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">#[test]</text>
+    <text x="790" y="525" font-size="16" fill="#333333" font-family="monospace">#[test]</text>
+    
+    <!-- Row 8 -->
+    <text x="70" y="555" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">#[cfg(test)]</text>
+    <text x="310" y="555" font-size="16" fill="#333333" font-family="monospace">#[cfg(test)]</text>
+    <text x="550" y="555" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">u64</text>
+    <text x="790" y="555" font-size="16" fill="#333333" font-family="monospace">id: u64</text>
+    
+    <!-- Row 9 -->
+    <text x="70" y="585" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">f64</text>
+    <text x="310" y="585" font-size="16" fill="#333333" font-family="monospace">price: f64</text>
+    <text x="550" y="585" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">String</text>
+    <text x="790" y="585" font-size="16" fill="#333333" font-family="monospace">name: String</text>
+    
+    <!-- Row 10 -->
+    <text x="70" y="615" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">DateTime</text>
+    <text x="310" y="615" font-size="16" fill="#333333" font-family="monospace">DateTime&lt;Utc&gt;</text>
+    <text x="550" y="615" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">ownership</text>
+    <text x="790" y="615" font-size="16" fill="#333333" font-family="monospace">move semantics</text>
+    
+    <!-- Row 11 -->
+    <text x="70" y="645" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">trait</text>
+    <text x="310" y="645" font-size="16" fill="#333333" font-family="monospace">trait Display</text>
+    <text x="550" y="645" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Error trait</text>
+    <text x="790" y="645" font-size="16" fill="#333333" font-family="monospace">std::error</text>
+    
+    <!-- Row 12 -->
+    <text x="70" y="675" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">expect</text>
+    <text x="310" y="675" font-size="16" fill="#333333" font-family="monospace">.expect("msg")</text>
+    <text x="550" y="675" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">assert_eq!</text>
+    <text x="790" y="675" font-size="16" fill="#333333" font-family="monospace">assert_eq!(a,b)</text>
+    
+    <!-- Row 13 -->
+    <text x="70" y="705" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">clone</text>
+    <text x="310" y="705" font-size="16" fill="#333333" font-family="monospace">.clone()</text>
+    <text x="550" y="705" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">chrono</text>
+    <text x="790" y="705" font-size="16" fill="#333333" font-family="monospace">use chrono</text>
+    
+    <!-- Row 14 -->
+    <text x="70" y="735" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">serde</text>
+    <text x="310" y="735" font-size="16" fill="#333333" font-family="monospace">use serde</text>
+    <text x="550" y="735" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">NaiveDate</text>
+    <text x="790" y="735" font-size="16" fill="#333333" font-family="monospace">NaiveDate</text>
+    
+    <!-- Row 15 (last row with 1 item) -->
+    <text x="70" y="765" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">parse_from_str</text>
+    <text x="310" y="765" font-size="16" fill="#333333" font-family="monospace">.parse_from_str()</text>
+    
+    <line x1="50" y1="785" x2="950" y2="785" stroke="#CC0000" stroke-width="2" />
+  </g>
+  
+  <!-- RUST EXECUTION TABLE -->
+  <g>
+    <rect x="30" y="825" width="440" height="380" rx="10" fill="url(#redTransparent)" stroke="#CC0000" stroke-width="2" opacity="0.5" />
+    
+    <text x="50" y="860" font-size="22" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Rust Execution</text>
+    <line x1="50" y1="875" x2="450" y2="875" stroke="#CC0000" stroke-width="2" />
+    
+    <text x="60" y="915" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Command</text>
+    <text x="260" y="915" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Description</text>
+    <line x1="50" y1="930" x2="450" y2="930" stroke="#CC0000" stroke-width="1" opacity="0.5" />
+    
+    <text x="60" y="965" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">cargo build</text>
+    <text x="260" y="965" font-size="14" fill="#333333" font-family="Arial, sans-serif">Compila il progetto</text>
+    
+    <text x="60" y="1005" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">cargo test</text>
+    <text x="260" y="1005" font-size="14" fill="#333333" font-family="Arial, sans-serif">Esegue tutti i test</text>
+    
+    <text x="60" y="1045" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">cargo run</text>
+    <text x="260" y="1045" font-size="14" fill="#333333" font-family="Arial, sans-serif">Esegue il programma</text>
+    
+    <text x="60" y="1085" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">cargo fmt</text>
+    <text x="260" y="1085" font-size="14" fill="#333333" font-family="Arial, sans-serif">Formatta il codice</text>
+    
+    <text x="60" y="1125" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">cargo check</text>
+    <text x="260" y="1125" font-size="14" fill="#333333" font-family="Arial, sans-serif">Controlla errori</text>
+    
+    <text x="60" y="1165" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">cargo doc</text>
+    <text x="260" y="1165" font-size="14" fill="#333333" font-family="Arial, sans-serif">Genera documentazione</text>
+    
+    <line x1="50" y1="1185" x2="450" y2="1185" stroke="#CC0000" stroke-width="2" />
+  </g>
+  
+  <!-- MAKEFILE TARGETS TABLE -->
+  <g>
+    <rect x="530" y="825" width="440" height="380" rx="10" fill="url(#redTransparent)" stroke="#CC0000" stroke-width="2" opacity="0.5" />
+    
+    <text x="550" y="860" font-size="22" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Makefile Targets</text>
+    <line x1="550" y1="875" x2="950" y2="875" stroke="#CC0000" stroke-width="2" />
+    
+    <text x="560" y="915" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Target</text>
+    <text x="760" y="915" font-size="18" font-weight="bold" fill="#CC0000" font-family="Arial, sans-serif">Description</text>
+    <line x1="550" y1="930" x2="950" y2="930" stroke="#CC0000" stroke-width="1" opacity="0.5" />
+    
+    <text x="560" y="965" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">make all</text>
+    <text x="760" y="965" font-size="14" fill="#333333" font-family="Arial, sans-serif">Build all targets</text>
+    
+    <text x="560" y="1005" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">make test</text>
+    <text x="760" y="1005" font-size="14" fill="#333333" font-family="Arial, sans-serif">Run all tests</text>
+    
+    <text x="560" y="1045" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">make run</text>
+    <text x="760" y="1045" font-size="14" fill="#333333" font-family="Arial, sans-serif">Execute program</text>
+    
+    <text x="560" y="1085" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">make fmt</text>
+    <text x="760" y="1085" font-size="14" fill="#333333" font-family="Arial, sans-serif">Format code</text>
+    
+    <text x="560" y="1125" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">make clean</text>
+    <text x="760" y="1125" font-size="14" fill="#333333" font-family="Arial, sans-serif">Clean build files</text>
+    
+    <text x="560" y="1165" font-size="16" font-weight="bold" fill="#CC0000" font-family="monospace">make docs</text>
+    <text x="760" y="1165" font-size="14" fill="#333333" font-family="Arial, sans-serif">Build documentation</text>
+    
+    <line x1="550" y1="1185" x2="950" y2="1185" stroke="#CC0000" stroke-width="2" />
+  </g>
+  
+  <!-- FOOTER -->
+  <g>
+    <line x1="50" y1="1255" x2="950" y2="1255" stroke="#CC0000" stroke-width="2" opacity="0.6" />
+    <text x="50%" y="1295" text-anchor="middle" font-size="20" fill="#CC0000" font-family="Arial, sans-serif">Open Source - Creative Commons</text>
+    <text x="50%" y="1325" text-anchor="middle" font-size="18" fill="#CC0000" font-family="Arial, sans-serif">GitHub: maximilianou/weekly77 - cart01 Learning</text>
   </g>
 </svg>

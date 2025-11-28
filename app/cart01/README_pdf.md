@@ -64,24 +64,6 @@ pub struct Product {
 - Testing: See section "Testing: #[cfg(test)] and #[test]"
 - DateTime: See section "DateTime and date parsing"
 
-**Cheatsheet**
-
-- `docker run --rm -v "$(pwd)":/data pandoc/extra pandoc README.md -o README.pdf --from=markdown+emoji --template=eisvogel --pdf-engine=xelatex`
-- `docker run --rm -v "$(pwd)":/data -w /data ghcr.io/pandoc/latex-universe:latest pandoc README.md -o README.pdf --from=markdown+emoji --template=./eisvogel.tex --pdf-engine=xelatex`
-- `docker pull ghcr.io/pandoc/latex-universe:latest`
-- `curl -L -o eisvogel.tex https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex`
-- `source /home/dev01/.nvm/nvm.sh && nvm use --silent 24.11.1`
-- `which node && node -v`
-- `node scripts/process_readme.js`
-- `bash scripts/build_book.sh`
-- `rsvg-convert -o assets/cover.png assets/cover.svg`
-- `convert assets/cover.svg assets/cover.png`
-- `base64 README.md > README_base64.txt`
-- `printf '```' > README_base64.md; cat README_base64.txt >> README_base64.md; printf '```' >> README_base64.md`
-- `cargo test`
-- `cargo build`
-- `git add . && git commit -m "update: add cheatsheet"`
-
 <!-- End README_pdf.md -->
 
 **Rust Cheatsheet**
@@ -178,13 +160,3 @@ pub struct Product {
 - `ok_or_else` → `.ok_or_else(|| ProductError::InvalidDate(published_date_str.to_string()))?`  (src/lib.rs)
 - `map` → `.map(|ndt| Utc.from_utc_datetime(&ndt))`  (src/lib.rs)
 
-### Code-fenced block example
-
-The following is a markdown code-fenced block showing a small snippet — this is what I mean by "code-fenced":
-
-```rust
-// Example: Product struct declaration
-pub struct Product {
-    id: u64,
-    name: String,
-    pric

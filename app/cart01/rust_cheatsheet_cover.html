@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Cheatsheet - Book Cover</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0066CC 0%, #003d99 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #0066CC;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+            font-style: italic;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        
+        thead {
+            background: linear-gradient(to bottom, #0066CC, #004d99);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+        
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #003d99;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        tbody tr:nth-child(odd) {
+            background: #f9f9f9;
+        }
+        
+        tbody tr:nth-child(even) {
+            background: #ffffff;
+        }
+        
+        tbody tr:hover {
+            background: #f0f0ff;
+            box-shadow: inset 2px 0 0 #0066CC;
+        }
+        
+        td:first-child {
+            font-weight: bold;
+            color: #0066CC;
+            font-size: 13px;
+        }
+        
+        td:last-child {
+            color: #666;
+            font-size: 11px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            font-size: 11px;
+        }
+        
+        /* Print-friendly styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            table {
+                page-break-inside: avoid;
+            }
+            
+            tbody tr {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Compact view for cover use */
+        .compact-table {
+            columns: 2;
+            column-gap: 20px;
+        }
+        
+        .compact-table table {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            font-size: 11px;
+        }
+        
+        .compact-table td,
+        .compact-table th {
+            padding: 8px;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rust Technical Terms Cheatsheet</h1>
+        <p class="subtitle">First Occurrence in cart01 Learning Project</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Term</th>
+                    <th style="width: 50%;">First Usage</th>
+                    <th style="width: 25%;">File</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>struct</code></td>
+                    <td><code>pub struct Product {</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>enum</code></td>
+                    <td><code>pub enum ProductError {</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>impl</code></td>
+                    <td><code>impl Product {</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>pub</code></td>
+                    <td><code>pub struct Product</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>use</code></td>
+                    <td><code>use chrono::{DateTime, Utc, ...}</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Result</code></td>
+                    <td><code>-> Result&lt;Self, ProductError&gt;</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Option</code></td>
+                    <td>(mentioned in docs)</td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Ok</code></td>
+                    <td><code>Ok(Product { id, ... })</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Err</code></td>
+                    <td><code>Err(ProductError::ZeroId)</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>match</code></td>
+                    <td><code>match self { ... }</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>&self</code></td>
+                    <td><code>pub fn id(&self) -> u64</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>&mut self</code></td>
+                    <td><code>pub fn set_name(&mut self, ...)</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>String</code></td>
+                    <td><code>name: String,</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>&str</code></td>
+                    <td><code>name: &str,</code> (parameter)</td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>u64</code></td>
+                    <td><code>id: u64,</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>f64</code></td>
+                    <td><code>price: f64,</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>DateTime&lt;Utc&gt;</code></td>
+                    <td><code>published_date: DateTime&lt;Utc&gt;,</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>chrono</code></td>
+                    <td><code>use chrono::{...}</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>serde</code></td>
+                    <td><code>use serde::{...}</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Serialize</code></td>
+                    <td><code>#[derive(..., Serialize, ...)]</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Deserialize</code></td>
+                    <td><code>#[derive(..., Deserialize)]</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>#[derive]</code></td>
+                    <td><code>#[derive(Clone, Debug, ...)]</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Clone</code></td>
+                    <td><code>#[derive(Clone, ...)]</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Debug</code></td>
+                    <td><code>#[derive(..., Debug, ...)]</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>PartialEq</code></td>
+                    <td><code>#[derive(..., PartialEq, ...)]</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>Display</code></td>
+                    <td><code>impl fmt::Display for Product</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>fmt::Formatter</code></td>
+                    <td><code>fn fmt(&self, f: &mut fmt::Formatter)</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>write!</code></td>
+                    <td><code>write!(f, "message")</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>println!</code></td>
+                    <td><code>println!("message")</code></td>
+                    <td>src/main.rs</td>
+                </tr>
+                <tr>
+                    <td><code>format!</code></td>
+                    <td><code>format!("{}", product)</code></td>
+                    <td>src/lib.rs (tests)</td>
+                </tr>
+                <tr>
+                    <td><code>assert_eq!</code></td>
+                    <td><code>assert_eq!(product.id(), 1)</code></td>
+                    <td>src/lib.rs (tests)</td>
+                </tr>
+                <tr>
+                    <td><code>assert!</code></td>
+                    <td><code>assert!(product.is_expensive(...))</code></td>
+                    <td>src/lib.rs (tests)</td>
+                </tr>
+                <tr>
+                    <td><code>#[cfg(test)]</code></td>
+                    <td><code>#[cfg(test)] mod tests</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>#[test]</code></td>
+                    <td><code>#[test] fn test_name()</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>to_string()</code></td>
+                    <td><code>name.to_string()</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>trim()</code></td>
+                    <td><code>name.trim().is_empty()</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>is_empty()</code></td>
+                    <td><code>name.trim().is_empty()</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>parse_from_str()</code></td>
+                    <td><code>NaiveDate::parse_from_str(...)</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>and_then()</code></td>
+                    <td><code>.ok().and_then(|nd| ...)</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>ok_or_else()</code></td>
+                    <td><code>.ok_or_else(|| ...)</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>map()</code></td>
+                    <td><code>.map(|ndt| ...)</code></td>
+                    <td>src/lib.rs</td>
+                </tr>
+                <tr>
+                    <td><code>fn</code></td>
+                    <td><code>fn main() {</code></td>
+                    <td>src/main.rs</td>
+                </tr>
+                <tr>
+                    <td><code>crate</code></td>
+                    <td><code>use cart01::Product</code></td>
+                    <td>src/main.rs</td>
+                </tr>
+                <tr>
+                    <td><code>?</code></td>
+                    <td>(unwrap operator)</td>
+                    <td>src/lib.rs (docs)</td>
+                </tr>
+                <tr>
+                    <td><code>ownership</code></td>
+                    <td>(core concept)</td>
+                    <td>src/lib.rs (docs)</td>
+                </tr>
+                <tr>
+                    <td><code>borrow</code></td>
+                    <td>(concept: <code>&self</code>)</td>
+                    <td>src/lib.rs</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="footer">
+            <p>cart01: Learning Rust | Maximiliano Usich | Open Source</p>
+        </div>
+    </div>
+</body>
+</html>
